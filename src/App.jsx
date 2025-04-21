@@ -2,72 +2,77 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { Search, Check, AlertCircle, Dna } from 'lucide-react';
 
-// Extended database of genetic markers and medication interactions
 const interactionDatabase = [
-  { gene: "CYP2C19", variant: "*2/*2", medication: "clopidogrel", effect: "Poor metabolizer. Reduced effectiveness. Consider alternative therapy.", severity: "high" },
-  { gene: "CYP2D6", variant: "*4/*4", medication: "codeine", effect: "Poor metabolizer. Reduced pain relief. Consider alternative therapy.", severity: "high" },
-  { gene: "SLCO1B1", variant: "521TC", medication: "simvastatin", effect: "Increased risk of myopathy. Consider dose reduction.", severity: "medium" },
-  { gene: "CYP3A5", variant: "*3/*3", medication: "tacrolimus", effect: "Poor metabolizer. Increased drug levels. Dose adjustment needed.", severity: "high" },
-  { gene: "DPYD", variant: "*2A", medication: "capecitabine", effect: "Deficient metabolizer. Increased toxicity risk. Consider alternative.", severity: "high" },
-  { gene: "G6PD", variant: "Mediterranean", medication: "primaquine", effect: "High risk of hemolysis. Avoid use.", severity: "high" },
-  { gene: "VKORC1", variant: "-1639G>A", medication: "warfarin", effect: "Increased sensitivity. Lower dose required.", severity: "high" },
-  { gene: "TPMT", variant: "*3A", medication: "azathioprine", effect: "Poor metabolizer. Increased toxicity risk. Consider dose reduction.", severity: "high" },
-  { gene: "NAT2", variant: "Slow Acetylator", medication: "isoniazid", effect: "Increased risk of toxicity. Monitor closely.", severity: "medium" }
+  { gene: "CYP2D6", medication: "fluoxetine", effect: "Inhibits CYP2D6, may alter metabolism of other drugs.", severity: "high" },
+  { gene: "CYP2D6", medication: "metoprolol", effect: "Poor metabolizers may experience exaggerated effects.", severity: "medium" },
+  { gene: "CYP2D6", medication: "tamoxifen", effect: "Reduced activation to endoxifen in poor metabolizers.", severity: "high" },
+  { gene: "CYP2D6", medication: "tramadol", effect: "Reduced analgesic effect in poor metabolizers.", severity: "medium" },
+  { gene: "CYP2C9", medication: "warfarin", effect: "Poor metabolizers need lower dose due to bleeding risk.", severity: "high" },
+  { gene: "CYP2C9", medication: "phenytoin", effect: "Slower metabolism may cause toxicity.", severity: "high" },
+  { gene: "CYP2C9", medication: "celecoxib", effect: "Increased plasma levels in poor metabolizers.", severity: "medium" },
+  { gene: "CYP2C19", medication: "omeprazole", effect: "Poor metabolizers have higher drug exposure.", severity: "medium" },
+  { gene: "CYP2C19", medication: "clopidogrel", effect: "Reduced conversion to active metabolite, reduced efficacy.", severity: "high" },
+  { gene: "CYP2C19", medication: "diazepam", effect: "Slower clearance in poor metabolizers.", severity: "medium" },
+  { gene: "CYP3A4", medication: "midazolam", effect: "Affected by CYP3A4 inhibitors, altered sedation levels.", severity: "high" },
+  { gene: "CYP3A4", medication: "atorvastatin", effect: "Inhibition increases myopathy risk.", severity: "medium" },
+  { gene: "CYP3A4", medication: "carbamazepine", effect: "Induces 3A4, affects metabolism of itself and others.", severity: "high" },
+  { gene: "CYP3A5", medication: "cyclosporine", effect: "Expressers metabolize faster, may need dose adjustment.", severity: "medium" },
+  { gene: "CYP1A2", medication: "caffeine", effect: "Slower clearance in poor metabolizers.", severity: "low" },
+  { gene: "CYP1A2", medication: "clozapine", effect: "Higher levels in poor metabolizers.", severity: "medium" },
+  { gene: "CYP1A2", medication: "theophylline", effect: "Requires dose adjustment based on metabolism and smoking status.", severity: "medium" },
+  { gene: "CYP2A6", medication: "nicotine", effect: "Poor metabolizers may respond differently to cessation therapy.", severity: "low" },
+  { gene: "CYP2A6", medication: "letrozole", effect: "Metabolism may vary; under investigation.", severity: "low" },
+  { gene: "CYP3A4", medication: "erythromycin", effect: "Inhibits CYP3A4, may increase drug levels.", severity: "high" },
+  { gene: "CYP3A4", medication: "verapamil", effect: "Inhibits CYP3A4, risk of drug accumulation.", severity: "high" },
+  { gene: "CYP3A4", medication: "ritonavir", effect: "Potent CYP3A4 inhibitor; significant interaction risk.", severity: "high" },
+  { gene: "CYP2D6", medication: "quinidine", effect: "Strong inhibitor; affects metabolism of CYP2D6 substrates.", severity: "high" },
+  { gene: "CYP1A2", medication: "fluvoxamine", effect: "Inhibits CYP1A2, may increase drug levels.", severity: "medium" },
+  { gene: "CYP2C19", medication: "voriconazole", effect: "CYP2C19 poor metabolizers show higher drug levels.", severity: "medium" },
+  { gene: "CYP2C9", medication: "losartan", effect: "Poor metabolizers may have reduced effect.", severity: "medium" },
+  { gene: "CYP2C9", medication: "glipizide", effect: "Increased risk of hypoglycemia in poor metabolizers.", severity: "medium" }
 ];
 
-// List of genetic markers for dropdown
 const commonGeneticMarkers = [
-  { gene: "CYP2C19", variants: ["*1/*1", "*1/*2", "*2/*2", "*1/*17", "*17/*17"] },
-  { gene: "CYP2D6", variants: ["*1/*1", "*1/*4", "*4/*4", "*1/*10", "*10/*10"] },
-  { gene: "SLCO1B1", variants: ["521TT", "521TC", "521CC"] },
-  { gene: "CYP3A5", variants: ["*1/*1", "*1/*3", "*3/*3"] },
-  { gene: "DPYD", variants: ["*1/*1", "*2A", "HapB3"] },
-  { gene: "G6PD", variants: ["Normal", "Mediterranean", "A-"] },
-  { gene: "VKORC1", variants: ["-1639G>A", "-1639G>G", "-1639A>A"] },
-  { gene: "TPMT", variants: ["*1/*1", "*1/*3A", "*1/*3C", "*3A/*3A"] },
-  { gene: "NAT2", variants: ["Fast Acetylator", "Slow Acetylator"] }
+  { gene: "CYP2C19" }, { gene: "CYP2D6" }, { gene: "CYP3A5" },
+  { gene: "CYP2A6" }, { gene: "CYP1B1" }, { gene: "CYP1B6" },
+  { gene: "CYP3A4" }, { gene: "CYP1A2" }, { gene: "CYP2C9" }
 ];
 
-// Expanded list of medications
-const commonMedications = ["clopidogrel", "codeine", "simvastatin", "tacrolimus", "capecitabine", "primaquine", "warfarin", "azathioprine", "isoniazid"];
+const commonMedications = [
+  "clopidogrel", "codeine", "tamoxifen", "tacrolimus", "nicotine",
+  "estradiol", "efavirenz", "simvastatin", "clozapine", "theophylline",
+  "warfarin", "cyclophosphamide"
+];
 
 function App() {
   const [selectedGene, setSelectedGene] = useState(null);
-  const [selectedVariant, setSelectedVariant] = useState(null);
   const [selectedMedication, setSelectedMedication] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
 
-  const variantsForSelectedGene = selectedGene
-    ? commonGeneticMarkers.find(marker => marker.gene === selectedGene)?.variants || []
-    : [];
-
   const handleSearch = () => {
-    if (!selectedGene || !selectedVariant || !selectedMedication) {
-      alert("Please fill in all fields before searching.");
+    if (!selectedGene || !selectedMedication) {
+      alert("Please select a gene and medication before searching.");
       return;
     }
 
     const results = interactionDatabase.filter(
       item =>
         item.gene.toLowerCase() === selectedGene.toLowerCase() &&
-        item.variant.toLowerCase() === selectedVariant.toLowerCase() &&
         item.medication.toLowerCase() === selectedMedication.toLowerCase()
     );
-    
+
     setSearchResults(results.length > 0 ? results[0] : null);
     setSearchPerformed(true);
   };
 
   const handleReset = () => {
     setSelectedGene(null);
-    setSelectedVariant(null);
     setSelectedMedication(null);
     setSearchResults(null);
     setSearchPerformed(false);
   };
 
-  // Convert genetic markers and medications into options format for react-select
   const geneOptions = commonGeneticMarkers.map(marker => ({
     value: marker.gene,
     label: marker.gene
@@ -78,20 +83,12 @@ function App() {
     label: med
   }));
 
-  const variantOptions = variantsForSelectedGene.map(variant => ({
-    value: variant,
-    label: variant
-  }));
-
-  // Custom styles for react-select
   const customStyles = {
     control: (provided) => ({
       ...provided,
       borderRadius: '8px',
       borderColor: '#E2E8F0',
-      '&:hover': {
-        borderColor: '#5A67D8',
-      },
+      '&:hover': { borderColor: '#5A67D8' },
       boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
     }),
     menu: (provided) => ({
@@ -103,9 +100,7 @@ function App() {
       ...provided,
       backgroundColor: state.isSelected ? '#5A67D8' : '',
       color: state.isSelected ? 'white' : '',
-      '&:hover': {
-        backgroundColor: '#E2E8F0',
-      },
+      '&:hover': { backgroundColor: '#E2E8F0' },
     }),
   };
 
@@ -125,7 +120,7 @@ function App() {
         <div className="bg-white rounded-lg shadow-xl p-8 mb-12">
           <div className="mb-8">
             <h2 className="text-3xl font-semibold text-gray-800">Start Your Analysis</h2>
-            <p className="text-gray-500 mt-2">Select the gene, variant, and medication to analyze possible interactions.</p>
+            <p className="text-gray-500 mt-2">Select the gene and medication to analyze possible interactions.</p>
           </div>
 
           <div className="space-y-8">
@@ -136,31 +131,11 @@ function App() {
               <Select
                 id="gene"
                 value={selectedGene ? { value: selectedGene, label: selectedGene } : null}
-                onChange={(e) => {
-                  setSelectedGene(e.value);
-                  setSelectedVariant(null); // Reset variant when gene changes
-                }}
+                onChange={(e) => setSelectedGene(e.value)}
                 options={geneOptions}
                 styles={customStyles}
                 classNamePrefix="react-select"
                 placeholder="Select a genetic marker"
-                isSearchable
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 mb-2" htmlFor="variant">
-                Variant
-              </label>
-              <Select
-                id="variant"
-                value={selectedVariant ? { value: selectedVariant, label: selectedVariant } : null}
-                onChange={(e) => setSelectedVariant(e.value)}
-                options={variantOptions}
-                isDisabled={!selectedGene}
-                styles={customStyles}
-                classNamePrefix="react-select"
-                placeholder="Select a variant"
                 isSearchable
               />
             </div>
@@ -217,7 +192,6 @@ function App() {
           )}
         </div>
 
-        {/* Footer with Styled Disclaimer */}
         <footer className="bg-blue-100 text-blue-800 text-center py-4 mt-12 rounded-tl-lg rounded-tr-lg shadow-lg">
           <div className="flex items-center justify-center gap-3 px-6">
             <AlertCircle size={20} className="text-blue-500" />
