@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import { Check, AlertCircle, Dna } from 'lucide-react';
+import LandingPage from './LandingPage';
 
 const characters = [
   { name: 'Bob', gene: 'CYP2C19' },
@@ -78,10 +79,20 @@ const commonMedications = [
 ];
 
 function App() {
+  const [showLandingPage, setShowLandingPage] = useState(true);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [selectedMedication, setSelectedMedication] = useState(null);
   const [ph, setPh] = useState(7.4); // Normal pH
   const [o2, setO2] = useState(98); // Normal O2
+
+  const handleNext = () => {
+    setShowLandingPage(false);
+  };
+
+  // Show landing page if showLandingPage is true
+  if (showLandingPage) {
+    return <LandingPage onNext={handleNext} />;
+  }
 
   const characterOptions = characters.map((char) => ({
     value: char.name,
