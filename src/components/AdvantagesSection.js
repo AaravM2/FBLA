@@ -127,76 +127,55 @@ const AdvantagesSection = ({ currentBox }) => {
       </div>
     </div>,
 
-    // Box 1: COMBINED (Operations, Customer, Data)
-    <div key={`combined-core-${animationKey}`} className="space-y-6">
-      <h2 className="text-4xl font-bold text-center mb-6 text-green-400 animate-contentSlide">
+    // Box 1: COMBINED (Operations, Customer, Data) - MODIFIED FOR LARGER, CENTERED BOXES
+    <div key={`combined-core-${animationKey}`} className="space-y-8">
+      <h2 className="text-4xl font-bold text-center mb-10 text-green-400 animate-contentSlide">
         Core Strategic Advantages
       </h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Container to center and enlarge the boxes */}
+      <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch">
         
-        {/* Streamlined Operations Column */}
-        <div className="bg-gradient-to-br from-green-900/50 to-teal-900/50 backdrop-blur-xl rounded-2xl p-6 border border-green-500/40 shadow-xl animate-contentSlide" style={{ animationDelay: '0.1s', opacity: 0 }}>
+        {/* Streamlined Operations Box - Enlarged */}
+        <div className="bg-gradient-to-br from-green-900/50 to-teal-900/50 backdrop-blur-xl rounded-3xl p-8 border border-green-500/40 shadow-2xl w-full md:max-w-xl animate-contentSlide" style={{ animationDelay: '0.1s', opacity: 0 }}>
           <div className="flex flex-col items-center mb-4">
-            <span className="text-5xl mb-3 animate-float">🚀</span>
-            <h4 className="font-bold text-xl text-green-300 text-center">Streamlined Operations</h4>
+            <span className="text-6xl mb-3 animate-float">🚀</span>
+            <h4 className="font-bold text-2xl text-green-300 text-center mb-4">Streamlined Operations</h4>
           </div>
-          <ul className="space-y-3 text-gray-200 text-sm md:text-base">
-            <li className="flex items-start gap-2">
-              <span className="text-green-400 mt-1">•</span>
-              <span>Optimizes logistics & predicts equipment failures</span>
+          <ul className="space-y-4 text-gray-200 text-base md:text-lg">
+            <li className="flex items-start gap-3">
+              <span className="text-green-400 mt-1 text-xl">•</span>
+              <span>Optimizes logistics & predicts equipment failures for proactive maintenance.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-400 mt-1">•</span>
-              <span>Automates routine inventory forecasting</span>
+            <li className="flex items-start gap-3">
+              <span className="text-green-400 mt-1 text-xl">•</span>
+              <span>Automates routine tasks, including sophisticated inventory and demand forecasting.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-400 mt-1">•</span>
-              <span>Minimizes waste while maximizing throughput</span>
+            <li className="flex items-start gap-3">
+              <span className="text-green-400 mt-1 text-xl">•</span>
+              <span>Minimizes waste and inefficiencies while maximizing overall production throughput.</span>
             </li>
           </ul>
         </div>
 
-        {/* Customer Experience Column */}
-        <div className="bg-gradient-to-br from-teal-900/50 to-cyan-900/50 backdrop-blur-xl rounded-2xl p-6 border border-teal-500/40 shadow-xl animate-contentSlide" style={{ animationDelay: '0.3s', opacity: 0 }}>
+        {/* Customer Experience Box - Enlarged */}
+        <div className="bg-gradient-to-br from-teal-900/50 to-cyan-900/50 backdrop-blur-xl rounded-3xl p-8 border border-teal-500/40 shadow-2xl w-full md:max-w-xl animate-contentSlide" style={{ animationDelay: '0.3s', opacity: 0 }}>
           <div className="flex flex-col items-center mb-4">
-            <span className="text-5xl mb-3 animate-float">💬</span>
-            <h4 className="font-bold text-xl text-teal-300 text-center">Enhanced Experience</h4>
+            <span className="text-6xl mb-3 animate-float">💬</span>
+            <h4 className="font-bold text-2xl text-teal-300 text-center mb-4">Enhanced Customer Experience</h4>
           </div>
-          <ul className="space-y-3 text-gray-200 text-sm md:text-base">
-            <li className="flex items-start gap-2">
-              <span className="text-teal-400 mt-1">•</span>
-              <span>24/7 personalized support via intelligent chatbots</span>
+          <ul className="space-y-4 text-gray-200 text-base md:text-lg">
+            <li className="flex items-start gap-3">
+              <span className="text-teal-400 mt-1 text-xl">•</span>
+              <span>Provides 24/7 personalized support through intelligent, context-aware chatbots.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-teal-400 mt-1">•</span>
-              <span>Tailored recommendations based on behavior</span>
+            <li className="flex items-start gap-3">
+              <span className="text-teal-400 mt-1 text-xl">•</span>
+              <span>Delivers tailored product and service recommendations based on real-time behavior analysis.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-teal-400 mt-1">•</span>
-              <span>Seamless interactions with zero wait times</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Data Driven Column */}
-        <div className="bg-gradient-to-br from-emerald-900/50 to-green-900/50 backdrop-blur-xl rounded-2xl p-6 border border-emerald-500/40 shadow-xl animate-contentSlide" style={{ animationDelay: '0.5s', opacity: 0 }}>
-          <div className="flex flex-col items-center mb-4">
-            <span className="text-5xl mb-3 animate-float">📊</span>
-            <h4 className="font-bold text-xl text-emerald-300 text-center">Data-Driven Decisions</h4>
-          </div>
-          <ul className="space-y-3 text-gray-200 text-sm md:text-base">
-            <li className="flex items-start gap-2">
-              <span className="text-emerald-400 mt-1">•</span>
-              <span>Rapidly processes large datasets for insights</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-emerald-400 mt-1">•</span>
-              <span>Predictive analytics for smarter strategy</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-emerald-400 mt-1">•</span>
-              <span>Uncovers hidden market trends instantly</span>
+            <li className="flex items-start gap-3">
+              <span className="text-teal-400 mt-1 text-xl">•</span>
+              <span>Ensures seamless customer interactions with minimal-to-zero wait times and high accuracy.</span>
             </li>
           </ul>
         </div>
@@ -246,18 +225,7 @@ const AdvantagesSection = ({ currentBox }) => {
       </h2>
       <div className="space-y-5">
         {[
-          {
-            title: " IBM Watson",
-            desc: "Revolutionized customer service with AI-powered chatbots and analytics",
-            points: [
-              "Improved response times by 300%",
-              "Reduced customer service costs by 30%",
-              "Handles 80% of routine inquiries automatically",
-              "Increased customer satisfaction scores by 25%"
-            ],
-            gradient: "from-green-900/50 to-emerald-900/50",
-            border: "border-green-500"
-          },
+         
           {
             title: " Mondelez International",
             desc: "Used AI for product development and market analysis",
