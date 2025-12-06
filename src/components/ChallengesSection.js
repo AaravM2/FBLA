@@ -24,7 +24,7 @@ const ChallengesSection = ({ currentBox }) => {
             Accuracy & Accountability
           </h3>
           <p className="text-gray-300 mb-6 text-lg">
-            AI applications are often "black boxes"—non-transparent and difficult to audit. Relying on them creates significant accountability gaps.
+            AI applications are often "black boxes",non-transparent and difficult to audit. Relying on them creates significant accountability gaps.
           </p>
           <ul className="space-y-3 text-gray-300">
             {[

@@ -15,12 +15,20 @@ const App = () => {
 
   const sections = [
     { id: 'intro', title: 'Introduction', icon: Brain, color: 'from-blue-600 to-purple-600', boxes: 3 },
-    { id: 'advantages', title: 'Advantages', icon: TrendingUp, color: 'from-green-500 to-teal-600', boxes: 6 },
+    { id: 'advantages', title: 'Advantages', icon: TrendingUp, color: 'from-green-500 to-teal-600', boxes: 4 },
     { id: 'challenges', title: 'Challenges', icon: AlertTriangle, color: 'from-orange-500 to-red-600', boxes: 3 },
-    { id: 'current', title: 'Current Use', icon: Building2, color: 'from-indigo-500 to-blue-600', boxes: 4 },
-    { id: 'responsible', title: 'Responsible AI', icon: Target, color: 'from-purple-500 to-pink-600', boxes: 5 },
+    { id: 'current', title: 'Current Use', icon: Building2, color: 'from-indigo-500 to-blue-600', boxes:3 },
+    { id: 'responsible', title: 'Responsible AI', icon: Target, color: 'from-purple-500 to-pink-600', boxes: 3 },
     { id: 'sources', title: 'Sources', icon: BookOpen, color: 'from-gray-600 to-gray-800', boxes: 1 }
   ];
+
+  // Scroll to top whenever section or box changes
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [currentSection, currentBox]);
 
   const navigateSection = (direction) => {
     if (isAnimating) return;
@@ -126,13 +134,13 @@ const App = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 pt-24 pb-12">
+      <div className="container mx-auto px-4 pt-32 pb-32">
         <div className="max-w-7xl mx-auto">
           {renderSection()}
         </div>
       </div>
 
-      <div className="fixed bottom-8 left-0 right-0 flex justify-center gap-4 z-40">
+      <div className="fixed bottom-12 left-0 right-0 flex justify-center gap-4 z-40">
         <button
           onClick={() => navigateSection('prev')}
           disabled={isFirstBox}

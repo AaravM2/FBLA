@@ -83,7 +83,7 @@ const IntroSection = ({ showLanding, setShowLanding, currentBox }) => {
                   animation: 'glow 2s ease-in-out infinite alternate'
                 }}
               >
-                The Dual Edge of AI in Business
+                Balance Tech
               </h1>
               
               <Sparkles className="absolute -top-4 -right-4 w-12 h-12 text-yellow-400 animate-pulse" />
@@ -218,22 +218,15 @@ const IntroSection = ({ showLanding, setShowLanding, currentBox }) => {
 
       {/* Key Points */}
       <div className="grid md:grid-cols-2 gap-6">
-        {[
-          { icon: '🤖', title: 'Machine Learning', desc: 'Learns from data patterns' },
-          { icon: '🧠', title: 'Deep Learning', desc: 'Complex neural networks' },
-          { icon: '💬', title: 'Natural Language', desc: 'Understands human language' },
-          { icon: '👁️', title: 'Computer Vision', desc: 'Recognizes visual data' }
-        ].map((item, i) => (
+        
+          
           <div 
-            key={i}
-            className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 animate-contentSlide hover:scale-105 transition-all duration-500"
-            style={{ animationDelay: `${i * 0.1}s`, opacity: 0 }}
+            
+           
           >
-            <div className="text-5xl mb-3">{item.icon}</div>
-            <h4 className="text-xl font-bold text-blue-300 mb-2">{item.title}</h4>
-            <p className="text-gray-300">{item.desc}</p>
+            
           </div>
-        ))}
+        
       </div>
     </div>,
 
@@ -338,7 +331,7 @@ const IntroSection = ({ showLanding, setShowLanding, currentBox }) => {
     // Box 2: Purpose
     <div key={`purpose-${animationKey}`} className="space-y-8">
       <h2 className="text-5xl font-bold text-center mb-8 text-indigo-400">
-        Purpose of This Presentation
+        Our Purpose
       </h2>
 
       <div className="bg-gradient-to-br from-indigo-900/50 to-purple-900/50 backdrop-blur-xl rounded-3xl p-10 border-2 border-indigo-500/40 shadow-2xl">

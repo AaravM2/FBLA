@@ -12,50 +12,8 @@ const ResponsibleSection = ({ currentBox }) => {
   }, [currentBox]);
 
   const boxes = [
-    // Box 0: Strategy & Steps
-    <div key={`strategy-${animationKey}`} className="space-y-8">
-      <h2 className="text-5xl font-bold text-center mb-8 text-purple-400 animate-contentSlide">
-        Implementation Strategy
-      </h2>
-      
-      {/* Top Concept */}
-      <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-6 animate-contentSlide" style={{ animationDelay: '0.1s', opacity: 0 }}>
-        <h3 className="text-2xl font-semibold mb-4 text-purple-300">The Right Role for AI</h3>
-        <p className="text-gray-300 leading-relaxed text-lg">
-          AI should augment human capabilities, not replace human judgment. The most successful implementations use AI as a tool to enhance decision-making and automate repetitive tasks while keeping humans in control.
-        </p>
-      </div>
 
-      {/* 5 Steps List */}
-      <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-lg rounded-2xl p-8 border border-purple-500/30 animate-contentSlide" style={{ animationDelay: '0.2s', opacity: 0 }}>
-        
-
-[Image of AI implementation roadmap]
-
-        <h3 className="text-2xl font-semibold mb-6 text-white border-b border-white/10 pb-4">5 Steps to Success</h3>
-        <div className="space-y-4">
-          {[
-            { num: 1, color: "purple", title: "Identify High-Impact Areas", desc: "Focus on repetitive, data-intensive processes." },
-            { num: 2, color: "pink", title: "Assess Impact on Small Scale", desc: "Run pilot projects to measure ROI before full rollout." },
-            { num: 3, color: "indigo", title: "Train Employees Thoroughly", desc: "Ensure familiarity and comfort with new tools." },
-            { num: 4, color: "violet", title: "Consult AI Experts", desc: "Leverage experts to harness full potential." },
-            { num: 5, color: "fuchsia", title: "Monitor & Adjust", desc: "Regular audits to ensure accuracy and relevance." }
-          ].map((step, i) => (
-            <div key={i} className="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-all duration-300 animate-contentSlide" style={{ animationDelay: `${0.3 + (i * 0.1)}s`, opacity: 0 }}>
-              <div className={`flex-shrink-0 w-10 h-10 bg-${step.color}-500 rounded-full flex items-center justify-center font-bold text-white shadow-lg`}>
-                {step.num}
-              </div>
-              <div>
-                <h4 className={`font-bold text-lg text-${step.color}-300 mb-1`}>{step.title}</h4>
-                <p className="text-gray-300 text-sm">{step.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>,
-
-    // Box 1: Ethics & Guidelines (Grid)
+    // Box 0: Ethics & Guidelines (Grid) - Now the first box
     <div key={`ethics-${animationKey}`} className="space-y-8">
       <h2 className="text-5xl font-bold text-center mb-8 text-pink-400 animate-contentSlide">
         Ethics & Governance
@@ -144,7 +102,7 @@ const ResponsibleSection = ({ currentBox }) => {
       </div>
     </div>,
 
-    // Box 2: Our Solution (AI Load Balancer)
+    // Box 1: Our Solution (AI Load Balancer) - Now the second box
     <div key={`solution-${animationKey}`} className="space-y-8">
       <h2 className="text-5xl font-bold text-center mb-8 text-blue-400 animate-contentSlide">
         Our Solution
@@ -205,7 +163,7 @@ const ResponsibleSection = ({ currentBox }) => {
       </div>
     </div>,
 
-    // Box 3: Conclusion
+    // Box 2: Conclusion - Now the third box
     <div key={`conclusion-${animationKey}`} className="space-y-8">
       <h2 className="text-5xl font-bold text-center mb-12 text-white animate-contentSlide">
         Moving Forward

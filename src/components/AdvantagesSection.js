@@ -51,7 +51,6 @@ const AdvantagesSection = ({ currentBox }) => {
 
   const boxes = [
     // Box 0: Statistics with animated chart
-    // REMOVED: animate-boxFocus and willChange
     <div key={`stats-${animationKey}`} className="space-y-8">
       <h2 className="text-5xl font-bold text-center mb-8 text-green-400 animate-contentSlide">
         Advantages of AI in Business
@@ -128,116 +127,84 @@ const AdvantagesSection = ({ currentBox }) => {
       </div>
     </div>,
 
-    // Box 1: Streamlined Operations
-    // REMOVED: animate-boxFocus and willChange
-    <div key={`operations-${animationKey}`} className="space-y-6">
-      <h2 className="text-5xl font-bold text-center mb-8 text-green-400">
-        Streamlined Operations
+    // Box 1: COMBINED (Operations, Customer, Data)
+    <div key={`combined-core-${animationKey}`} className="space-y-6">
+      <h2 className="text-4xl font-bold text-center mb-6 text-green-400 animate-contentSlide">
+        Core Strategic Advantages
       </h2>
-      <div className="bg-gradient-to-br from-green-900/50 to-teal-900/50 backdrop-blur-xl rounded-3xl p-10 border-2 border-green-500/40 shadow-2xl transition-smooth-scale">
-        <div className="flex items-center gap-4 mb-6">
-          <span className="text-6xl animate-float">🚀</span>
-          <h4 className="font-bold text-3xl text-green-300">Optimizing Business Processes</h4>
-        </div>
-        <ul className="space-y-4 text-gray-200 text-xl">
-          {[
-            "Optimizes logistics and supply chains automatically",
-            "Predicts equipment failures before they occur",
-            "Analyzes historical data to identify trends and improvements",
-            "Forecasts inventory levels based on past sales data",
-            "Minimizes waste while maximizing profits",
-            "Introduces responsive and intelligent operational frameworks"
-          ].map((item, index) => (
-            <li 
-              key={index}
-              className="flex items-start gap-4 p-3 rounded-lg hover:bg-white/10 transition-all duration-500 animate-listItem"
-              style={{ 
-                animationDelay: `${index * 0.1}s`,
-                opacity: 0
-              }}
-            >
-              <span className="text-green-400 mt-1 text-2xl">•</span>
-              <span>{item}</span>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        {/* Streamlined Operations Column */}
+        <div className="bg-gradient-to-br from-green-900/50 to-teal-900/50 backdrop-blur-xl rounded-2xl p-6 border border-green-500/40 shadow-xl animate-contentSlide" style={{ animationDelay: '0.1s', opacity: 0 }}>
+          <div className="flex flex-col items-center mb-4">
+            <span className="text-5xl mb-3 animate-float">🚀</span>
+            <h4 className="font-bold text-xl text-green-300 text-center">Streamlined Operations</h4>
+          </div>
+          <ul className="space-y-3 text-gray-200 text-sm md:text-base">
+            <li className="flex items-start gap-2">
+              <span className="text-green-400 mt-1">•</span>
+              <span>Optimizes logistics & predicts equipment failures</span>
             </li>
-          ))}
-        </ul>
+            <li className="flex items-start gap-2">
+              <span className="text-green-400 mt-1">•</span>
+              <span>Automates routine inventory forecasting</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-green-400 mt-1">•</span>
+              <span>Minimizes waste while maximizing throughput</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Customer Experience Column */}
+        <div className="bg-gradient-to-br from-teal-900/50 to-cyan-900/50 backdrop-blur-xl rounded-2xl p-6 border border-teal-500/40 shadow-xl animate-contentSlide" style={{ animationDelay: '0.3s', opacity: 0 }}>
+          <div className="flex flex-col items-center mb-4">
+            <span className="text-5xl mb-3 animate-float">💬</span>
+            <h4 className="font-bold text-xl text-teal-300 text-center">Enhanced Experience</h4>
+          </div>
+          <ul className="space-y-3 text-gray-200 text-sm md:text-base">
+            <li className="flex items-start gap-2">
+              <span className="text-teal-400 mt-1">•</span>
+              <span>24/7 personalized support via intelligent chatbots</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-teal-400 mt-1">•</span>
+              <span>Tailored recommendations based on behavior</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-teal-400 mt-1">•</span>
+              <span>Seamless interactions with zero wait times</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Data Driven Column */}
+        <div className="bg-gradient-to-br from-emerald-900/50 to-green-900/50 backdrop-blur-xl rounded-2xl p-6 border border-emerald-500/40 shadow-xl animate-contentSlide" style={{ animationDelay: '0.5s', opacity: 0 }}>
+          <div className="flex flex-col items-center mb-4">
+            <span className="text-5xl mb-3 animate-float">📊</span>
+            <h4 className="font-bold text-xl text-emerald-300 text-center">Data-Driven Decisions</h4>
+          </div>
+          <ul className="space-y-3 text-gray-200 text-sm md:text-base">
+            <li className="flex items-start gap-2">
+              <span className="text-emerald-400 mt-1">•</span>
+              <span>Rapidly processes large datasets for insights</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-emerald-400 mt-1">•</span>
+              <span>Predictive analytics for smarter strategy</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-emerald-400 mt-1">•</span>
+              <span>Uncovers hidden market trends instantly</span>
+            </li>
+          </ul>
+        </div>
+        
       </div>
     </div>,
 
-    // Box 2: Enhanced Customer Experience
-    // REMOVED: animate-boxFocus and willChange
-    <div key={`customer-${animationKey}`} className="space-y-6">
-      <h2 className="text-5xl font-bold text-center mb-8 text-teal-400">
-        Enhanced Customer Experience
-      </h2>
-      <div className="bg-gradient-to-br from-teal-900/50 to-cyan-900/50 backdrop-blur-xl rounded-3xl p-10 border-2 border-teal-500/40 shadow-2xl transition-smooth-scale">
-        <div className="flex items-center gap-4 mb-6">
-          <span className="text-6xl animate-float">💬</span>
-          <h4 className="font-bold text-3xl text-teal-300">Personalized Interactions</h4>
-        </div>
-        <ul className="space-y-4 text-gray-200 text-xl">
-          {[
-            "Provides personalized interactions that align with clients",
-            "Chatbots handle inquiries 24/7 with instant responses",
-            "Zero human intervention needed for routine questions",
-            "Analyzes customer behavior trends for tailored recommendations",
-            "E-commerce stores offer products based on individual preferences",
-            "Increases sales and customer satisfaction significantly"
-          ].map((item, index) => (
-            <li 
-              key={index}
-              className="flex items-start gap-4 p-3 rounded-lg hover:bg-white/10 transition-all duration-500 animate-listItem"
-              style={{ 
-                animationDelay: `${index * 0.1}s`,
-                opacity: 0
-              }}
-            >
-              <span className="text-teal-400 mt-1 text-2xl">•</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>,
-
-    // Box 3: Data-Driven Decision Making
-    // REMOVED: animate-boxFocus and willChange
-    <div key={`data-${animationKey}`} className="space-y-6">
-      <h2 className="text-5xl font-bold text-center mb-8 text-emerald-400">
-        Data-Driven Decision Making
-      </h2>
-      <div className="bg-gradient-to-br from-emerald-900/50 to-green-900/50 backdrop-blur-xl rounded-3xl p-10 border-2 border-emerald-500/40 shadow-2xl transition-smooth-scale">
-        <div className="flex items-center gap-4 mb-6">
-          <span className="text-6xl animate-float">📊</span>
-          <h4 className="font-bold text-3xl text-emerald-300">Intelligent Insights</h4>
-        </div>
-        <ul className="space-y-4 text-gray-200 text-xl">
-          {[
-            "Processes and analyzes large datasets in seconds",
-            "Enables smart, informed decisions quickly",
-            "Assesses market conditions and client portfolios accurately",
-            "Predictive analytics impact profitability positively",
-            "Uncovers insights previously hidden in data",
-            "Adapts strategies to consumer behavior and market trends"
-          ].map((item, index) => (
-            <li 
-              key={index}
-              className="flex items-start gap-4 p-3 rounded-lg hover:bg-white/10 transition-all duration-500 animate-listItem"
-              style={{ 
-                animationDelay: `${index * 0.1}s`,
-                opacity: 0
-              }}
-            >
-              <span className="text-emerald-400 mt-1 text-2xl">•</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>,
-
-    // Box 4: Cost Efficiency
-    // REMOVED: animate-boxFocus and willChange
+    // Box 2: Cost Efficiency (Originally Box 4)
     <div key={`cost-${animationKey}`} className="space-y-6">
       <h2 className="text-5xl font-bold text-center mb-8 text-green-500">
         Cost Efficiency & Increased ROI
@@ -272,8 +239,7 @@ const AdvantagesSection = ({ currentBox }) => {
       </div>
     </div>,
 
-    // Box 5: Success Stories
-    // REMOVED: animate-boxFocus and willChange
+    // Box 3: Success Stories (Originally Box 5)
     <div key={`success-${animationKey}`} className="space-y-6">
       <h2 className="text-5xl font-bold text-center mb-8 text-green-400">
         Success Stories
@@ -281,7 +247,7 @@ const AdvantagesSection = ({ currentBox }) => {
       <div className="space-y-5">
         {[
           {
-            title: "🔷 IBM Watson",
+            title: " IBM Watson",
             desc: "Revolutionized customer service with AI-powered chatbots and analytics",
             points: [
               "Improved response times by 300%",
@@ -293,7 +259,7 @@ const AdvantagesSection = ({ currentBox }) => {
             border: "border-green-500"
           },
           {
-            title: "🍫 Mondelez International",
+            title: " Mondelez International",
             desc: "Used AI for product development and market analysis",
             points: [
               "Optimized production of Oreo and Cadbury brands",
@@ -305,7 +271,7 @@ const AdvantagesSection = ({ currentBox }) => {
             border: "border-teal-500"
           },
           {
-            title: "📚 Headway & 🥐 Priestley's Bakery",
+            title: " Headway &  Priestley's Bakery",
             desc: "EdTech and small business success stories",
             points: [
               "Headway: 250% increase in user engagement, 15M+ users",

@@ -152,35 +152,7 @@ const CurrentUseSection = ({ currentBox }) => {
     </div>,
 
     // Box 2: Real World Examples
-    <div key={`examples-${animationKey}`} className="space-y-8">
-      <h2 className="text-5xl font-bold text-center mb-8 text-white animate-contentSlide">
-        Real-World Success
-      </h2>
-      
-      <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-2xl">
-        <div className="grid md:grid-cols-2 gap-4">
-          {[
-            { name: "🛒 Amazon", color: "indigo", desc: "Recommendation engine increases sales by up to 35%" },
-            { name: "💄 Sephora", color: "pink", desc: "Virtual makeup try-on reduces returns and boosts satisfaction" },
-            { name: "🚜 John Deere", color: "green", desc: "AI weed detection reduces pesticide costs by 90%" },
-            { name: "🏦 JPMorgan", color: "blue", desc: "Parses contracts in seconds; saves 360,000 human hours" },
-            { name: "🏥 Hospitals", color: "red", desc: "Analyzes scans (X-rays) with higher accuracy than humans" },
-            { name: "🌮 Taco Bell", color: "orange", desc: "Optimizes staffing and inventory based on demand prediction" },
-            { name: "🛍️ Walmart", color: "purple", desc: "Smart checkout systems and inventory optimization" },
-            { name: "✉️ Gmail", color: "teal", desc: "ML-powered filters block 99.9% of spam/phishing" }
-          ].map((item, i) => (
-            <div 
-              key={i}
-              className={`border-l-4 border-${item.color}-500 pl-4 animate-contentSlide hover:bg-white/5 p-3 rounded-r-lg transition-colors`}
-              style={{ animationDelay: `${i * 0.1}s`, opacity: 0 }}
-            >
-              <h4 className={`font-bold text-lg text-${item.color}-400 mb-1`}>{item.name}</h4>
-              <p className="text-gray-300 text-sm">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>,
+   
 
     // Box 3: Helpful vs Risky (OpenAI Response)
     <div key={`safety-${animationKey}`} className="space-y-8">
